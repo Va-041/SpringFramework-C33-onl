@@ -26,7 +26,7 @@ public class UploadBookServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/upload-book.html").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/lesson25/upload-book.html").forward(req, resp);
     }
 
     @Override

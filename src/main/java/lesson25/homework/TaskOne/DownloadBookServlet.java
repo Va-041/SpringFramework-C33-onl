@@ -28,7 +28,7 @@ public class DownloadBookServlet extends HttpServlet {
             handleFileDownload(req, resp, requestedFile);
             return;
         }
-        req.getRequestDispatcher("/WEB-INF/download-book.html").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/lesson25/download-book.html").forward(req, resp);
     }
 
     private void handleFileDownload(HttpServletRequest req, HttpServletResponse resp, String fileName)
