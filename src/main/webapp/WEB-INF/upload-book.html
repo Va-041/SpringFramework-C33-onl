@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Загрузка книги</title>
+    <style>
+        .success { color: green; font-weight: bold; }
+        .error { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+<h1>Загрузить книгу (FB2/PDF/TXT)</h1>
+<form action="/SpringFrame_war/upload-book" method="post" enctype="multipart/form-data">
+    <input type="file" name="bookFile" accept=".pdf,.fb2,.txt" required>
+    <button type="submit">Загрузить</button>
+</form>
+<a href="/SpringFrame_war/download-book">К списку книг</a>
+<p><a href="/SpringFrame_war/home-book">На главную</a></p>
+</body>
+</html>

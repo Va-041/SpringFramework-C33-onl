@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>Книги</title>
+</head>
+<body>
+<h1>Доступные книги</h1>
+<ul id="books-list">
+    <li>Загрузка списка книг...</li>
+</ul>
+<div id="download-status"></div>
+<a href='/SpringFrame_war/home-book' class="back-link">Назад</a>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        loadBooksList();
+    });
+
+    function loadBooksList() {
+        fetch('/SpringFrame_war/download-book?list=1')
+            .then(response => {
+                if (!response.ok) throw new Error('Ошибка сервера: ' + response.status);
+                return response.json();
+            })
+            .then(books => {
+                const listElement = document.getElementById('books-list');
+                listElement.innerHTML = '';
+
+                if (books.length > 0) {
+                    books.forEach(book => {
+                        const li = document.createElement('li');
+                        const a = document.createElement('a');
+                        a.href = '#';
+                        a.textContent = book;
+                        a.onclick = (e) => {
+                            e.preventDefault();
+                            downloadBook(book);
+                        };
+                        li.appendChild(a);
+                        listElement.appendChild(li);
+                    });
+                } else {
+                    const li = document.createElement('li');
+                    li.textContent = 'Нет доступных книг';
+                    listElement.appendChild(li);
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+                document.getElementById('books-list').innerHTML =
+                    '<li>Ошибка загрузки списка книг: ' + error.message + '</li>';
+            });
+    }
+
+    function downloadBook(filename) {
+        const statusElement = document.getElementById('download-status');
+        statusElement.textContent = 'Скачивание файла: ' + filename + '...';
+        statusElement.className = '';
+        statusElement.style.display = 'block';
+
+        // Создаем временную ссылку для скачивания
+        const downloadLink = document.createElement('a');
+        downloadLink.href = `/SpringFrame_war/download-book?file=${encodeURIComponent(filename)}`;
+        downloadLink.download = filename;
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+
+        // Показываем сообщение об успешном скачивании
+        statusElement.textContent = 'Файл ' + filename + ' успешно скачан!';
+        statusElement.className = 'success';
+        setTimeout(() => {
+            statusElement.style.display = 'none';
+        }, 3000);
+    }
+</script>
+</body>
+</html>
