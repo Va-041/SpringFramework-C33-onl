@@ -35,7 +35,7 @@ public class AdultServlet extends HttpServlet {
                 <body>
                     <h1>Результат проверки</h1>
                     <p>%s</p>
-                    <a href="/SpringFrame_war/adult.html">Проверить ещё раз</a>
+                    <a href="/SpringFrame_war/taskTwoPage">Проверить ещё раз</a>
                     <br>
                     <a href="/SpringFrame_war/home">На главную</a>
                 </body>

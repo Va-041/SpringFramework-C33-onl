@@ -1,4 +1,4 @@
-package lesson24.homework;
+package lesson28.homework;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,9 +8,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet("/home")
+@WebServlet("/home-28")
 public class HomePageServlet extends HttpServlet {
-
 
     @Override
     public void init() {
@@ -27,9 +26,8 @@ public class HomePageServlet extends HttpServlet {
                     <title>Главная</title>
                 </head>
                 <body>
-                    <h1>Домашнее задание №24</h1>
-                    <p><a href="/SpringFrame_war/taskOne">Задание 1</a></p>
-                    <p><a href="/SpringFrame_war/taskTwoPage">Задание 2</a></p>
+                    <h1>Домашнее задание №28</h1>
+                    <p><a href="/SpringFrame_war/taskOnePage">Задание 1</a></p>
                 </body>
                 </html>
         """);
@@ -40,3 +38,4 @@ public class HomePageServlet extends HttpServlet {
         System.out.println("!!! Servlet was destroyed !!!");
     }
 }
+
