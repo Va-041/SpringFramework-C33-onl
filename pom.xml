@@ -51,8 +51,23 @@
       <version>3.0.1</version>
       <scope>runtime</scope>
     </dependency>
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>42.6.0</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>SpringFrame</finalName>
+      <plugins>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <configuration>
+                  <source>15</source>
+                  <target>15</target>
+              </configuration>
+          </plugin>
+      </plugins>
   </build>
 </project>
